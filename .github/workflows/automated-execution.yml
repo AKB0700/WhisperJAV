@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   smoke-check:
     runs-on: ubuntu-latest
@@ -16,4 +19,7 @@ jobs:
           python-version: '3.12'
 
       - name: Smoke compile
-        run: python -m compileall whisperjav
+        run: python -m compileall -q whisperjav || exit 1
+
+      - name: Smoke import
+        run: python -c "import whisperjav; print(whisperjav.__version__)"
