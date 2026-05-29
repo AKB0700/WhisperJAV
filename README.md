@@ -57,6 +57,25 @@ Furthermore, while fine-tuning models on domain-specific data can be effective, 
 
 ## Quick Start
 
+### One-Click Full Flow
+
+```bash
+python scripts/one_click_run.py
+```
+
+Default behavior:
+- Auto-runs `install.py` when WhisperJAV is not installed yet
+- Launches GUI when no input file is provided
+- Runs CLI when you pass input file(s)
+
+```bash
+# GUI
+python scripts/one_click_run.py --gui
+
+# CLI
+python scripts/one_click_run.py video.mp4 --mode balanced
+```
+
 ### GUI (Recommended for most users)
 
 ```bash
