@@ -4,6 +4,50 @@
 
 ---
 
+## 0. 看截图后如何快速处理（先排错再安装）
+
+如果你是“看了一张报错截图，不知道下一步怎么做”，按下面流程处理：
+
+1. **先看报错最后一行（最关键）**
+   - `python is not recognized` / `python not found`：先安装 Python 3.10-3.12，并重开终端
+   - `ffmpeg not found`：安装 FFmpeg，并确认 `ffmpeg -version` 能执行
+   - `git not found`：安装 Git，并确认 `git --version` 能执行
+   - `CUDA` / `torch` 相关错误：先改用 CPU 路径安装（`--cpu-only`）
+
+2. **用最稳妥的 Windows 安装命令（可放在 H 盘）**
+
+```cmd
+cd /d H:\
+git clone https://github.com/meizhong986/whisperjav.git
+cd whisperjav
+
+python -m venv H:\whisperjav-env
+H:\whisperjav-env\Scripts\activate
+
+installer\install_windows.bat
+```
+
+如果标准安装失败，再执行：
+
+```cmd
+installer\install_windows.bat --cpu-only
+```
+
+3. **安装后立即验证**
+
+```cmd
+whisperjav --help
+whisperjav-gui
+```
+
+4. **仍失败时提供最有用信息**
+   - 提供终端**最后 20 行错误日志**，或
+   - 直接贴出报错截图（含最后一行）
+
+这两种信息都能最快定位“该改哪一步”。
+
+---
+
 ## 1. 前提条件
 
 ### 必需软件
